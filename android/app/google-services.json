@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "595666863051",
+    "project_id": "note-9318b",
+    "storage_bucket": "note-9318b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595666863051:android:f39ec32c3c480f12622c4e",
+        "android_client_info": {
+          "package_name": "com.dart.my_notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595666863051-v552hm871a4qp079a911i729u46hp9mq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR9tzrQu2rDMr8ELgjdTIs4H9ie3aYxew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595666863051-v552hm871a4qp079a911i729u46hp9mq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
