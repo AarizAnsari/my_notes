@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
      theme: ThemeData(
-       appBarTheme: AppBarTheme(
+       appBarTheme: const AppBarTheme(
          centerTitle: true,
          backgroundColor: Colors.white,
          elevation: 5,
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
          style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blueAccent)),
        ),
      ),
-     home: Home(),
+     home:const Home(),
     );
   }
 }

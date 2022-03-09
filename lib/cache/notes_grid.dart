@@ -15,7 +15,7 @@ class _NotesGridState extends State<NotesGrid> {
     return StreamBuilder<QuerySnapshot>(
       stream:  FirebaseFirestore.instance.collection("users")
           .doc(FirebaseAuth.instance.currentUser?.uid)
-          .collection('notes').snapshots(),
+          .collection('notes').orderBy('createdAt',descending: true).snapshots(),
         builder: (context, snapshot) {
         if(snapshot.hasData){
           return GridView.builder(

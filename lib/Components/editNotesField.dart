@@ -15,6 +15,8 @@ class EditNotesField extends StatefulWidget {
 class _EditNotesFieldState extends State<EditNotesField> {
   String title='';
   String note='';
+  String titleHint='';
+  String noteHint='';
   late DocumentReference boxID;
   _EditNotesFieldState({required this.title,required this.note,required this.boxID});
 
@@ -42,6 +44,10 @@ class _EditNotesFieldState extends State<EditNotesField> {
                   },
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
+                      hintText: titleHint,
+                      hintStyle: TextStyle(
+                          color: Colors.red
+                      ),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(
                               color: Colors.black,
@@ -79,6 +85,10 @@ class _EditNotesFieldState extends State<EditNotesField> {
                   maxLines: 3,
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
+                      hintText: noteHint,
+                      hintStyle: TextStyle(
+                          color: Colors.red
+                      ),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(
                               color: Colors.black,
@@ -99,11 +109,33 @@ class _EditNotesFieldState extends State<EditNotesField> {
           SizedBox(height: 18),
           TextButton.icon(
             onPressed: () async{
-              boxID.update({
-                'title': title,
-                'note': note
-              });
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
+
+              if(title!=''&&note!=''){
+                boxID.update({
+                  'title': title,
+                  'note': note
+                });
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
+              }
+              if(title==''&&note==''){
+                setState(() {
+                  titleHint='Please enter title!';
+                  noteHint='Please enter note!';
+                });
+              }
+              if(title==''&&note!=''){
+                setState(() {
+                  titleHint='Please enter title!';
+                  noteHint='';
+                });
+              }
+              if(title!=''&&note==''){
+                setState(() {
+                  titleHint='';
+                  noteHint='Please enter note!';
+                });
+              }
+
             },
             icon: Icon(Icons.add,color: Colors.white),
             label: Text("Edit Note",

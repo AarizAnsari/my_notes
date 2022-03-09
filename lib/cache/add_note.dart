@@ -7,6 +7,7 @@ void AddNote({required String title,required String note}) async{
       .doc(FirebaseAuth.instance.currentUser?.uid)
       .collection('notes').add({
     'title': title,
-    'note': note
+    'note': note,
+    'createdAt': DateTime.now()
   });
 }

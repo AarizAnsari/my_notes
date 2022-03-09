@@ -18,7 +18,9 @@ class NoteBox extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             elevation: 1,
-            title: Text(titleText),
+            title: FittedBox(
+                child: Text(titleText),
+            ),
             actions: [
               IconButton(onPressed: (){
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) =>

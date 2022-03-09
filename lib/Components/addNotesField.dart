@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_notes/Components/noteBox.dart';
 import 'package:my_notes/cache/add_note.dart';
+import 'package:my_notes/main.dart';
 
 class AddNotesField extends StatefulWidget {
   const AddNotesField({Key? key}) : super(key: key);
@@ -11,6 +11,8 @@ class AddNotesField extends StatefulWidget {
 }
 String title='';
 String note='';
+String titleHint='';
+String noteHint='';
 
 TextEditingController titleController = TextEditingController();
 TextEditingController noteController = TextEditingController();
@@ -39,6 +41,10 @@ class _AddNotesFieldState extends State<AddNotesField> {
                },
                cursorColor: Colors.black,
                decoration: InputDecoration(
+                 hintText: titleHint,
+                 hintStyle: TextStyle(
+                   color: Colors.red
+                 ),
                  border: OutlineInputBorder(
                    borderSide: BorderSide(
                      color: Colors.black,
@@ -76,6 +82,10 @@ class _AddNotesFieldState extends State<AddNotesField> {
                  maxLines: 3,
                  cursorColor: Colors.black,
                  decoration: InputDecoration(
+                   hintText: noteHint,
+                     hintStyle: TextStyle(
+                       color: Colors.red
+                     ),
                      border: OutlineInputBorder(
                          borderSide: BorderSide(
                              color: Colors.black,
@@ -96,11 +106,37 @@ class _AddNotesFieldState extends State<AddNotesField> {
          SizedBox(height: 18),
          TextButton.icon(
              onPressed: () async{
-             AddNote(title: title, note: note);
-              setState(() {
-             titleController.clear();
-             noteController.clear();
-              });
+               if (title!=''&&note!=''){AddNote(title: title, note: note);
+               titleHint='';
+               noteHint='';
+               title='';
+               note='';
+               noteController.clear();
+               titleController.clear();
+               FocusManager.instance.primaryFocus?.unfocus();
+               setState(() {
+                 main();
+               });
+               }
+              else if(title==''&&note==''){
+                 setState(() {
+                   titleHint='Please enter title!';
+                   noteHint='Please enter note!';
+                 });
+               }
+              else if(title==''&&note!=''){
+                 setState(() {
+                   titleHint='Please enter title!';
+                   noteHint='';
+                 });
+               }
+              else if(title!=''&&note==''){
+                 setState(() {
+                   titleHint='';
+                   noteHint='Please enter note!';
+                 });
+               }
+
              },
              icon: Icon(Icons.add,color: Colors.white),
              label: Text("Add Note",

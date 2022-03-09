@@ -12,6 +12,7 @@ class EditNote extends StatefulWidget {
   _EditNoteState createState() => _EditNoteState(titleText: titleText,noteText: noteText,boxId: boxId);
 }
 
+
 class _EditNoteState extends State<EditNote> {
   late String titleText, noteText;
   late DocumentReference boxId;
